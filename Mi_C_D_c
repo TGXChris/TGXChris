@@ -1,0 +1,120 @@
+Productos = []
+Agregar = 1
+Insertar = 2
+Mostrar = 3
+Buscar = 4
+Eliminar = 5
+Ordenar = 6
+Limpiar = 7
+Salir = 0
+
+def Imprimir_menu():
+    os.system('cls')
+
+print(f'''                    Productos
+{Agregar} ) Agregar
+{Insertar} ) Insertar
+{Mostrar} ) Mostrar
+{Buscar} ) Buscar
+{Eliminar} ) Eliminar
+{Ordenar} ) Ordenar
+{Limpiar} ) Limpiar lista
+{Salir} ) Salir     ''')
+
+def agregar_Registro():
+    Print('                    agregar')
+    nombre = input('nombre :')
+    Productos.append(nombre)
+    print('registro ingresado exitosamente.')
+
+def Insertar_registro():
+    print('                    Insertar')
+    nombre= input('nombre :')
+    pos = int(input('posicion:'))
+    Productos.insert(pos,nombre)
+    print('Registro ingresado en la posicion señalada')
+
+def Mostrar_Registro():
+    print('                     Mostrar')
+    if len(Productos) > 0:
+        for producto in Productos:
+            print(producto)
+    else:
+        print('No se han añadido productos :')
+
+def Buscar_Registro():
+    print('                      Buscar')
+    if len(Productos) > 0:
+        nombre = input('Ingrese el nombre del producto que desea buscar :')
+        if nombre in productos:
+            cantidad = productos.count(nombre)
+            inicio=0
+            for i in range(cantidad):
+                pos = productos.index(nombre,inicio)
+                print(f'{nombre} su producto se ubica en la posicion {pos+1}')
+                inicio=pos+1
+        else:
+            print(f'{nombre}, nose ha encontrado en la lista')
+    else:
+        print('No se han añadido productos')
+
+def Eliminar_Registro():
+    print('                       Eliminar')
+    if len(Productos) > 0:
+        for i in range(len(productos)):
+            print(f'{i+1}. {Productos[i]}')
+            print('0. cancelar')
+            pos= int(input(f'posicion producto que eliminara (1 - {len(productos)})'))
+            if 0 < pos <= len(productos):
+                productos.pop(pos-1)
+                Print('Producto eliminado con exito ')
+            else:
+                print('No se eliminara niun producto')
+
+    else:
+        print('No se ha encontrado el producto')
+
+def Ordenar_Registro():
+    print('                         Ordenar')
+    if len(Productos) > 0:
+        productos.sort()
+        print('Productos ordenados alfabeticamente')
+    else:
+        print('No se han agregado Productos')
+
+def Limpiar_Registro():
+    print('                          Limpiar')
+    productos.clear()
+    print('La lista a sido borrada con exito')
+
+def main():
+    continuar = True
+    while continuar:
+        Imprimir_menu()
+        opc = int(input('Selecciona una opcion :'))
+        os.system('cls')
+        if opc == Agregar:
+            agregar_Registro()
+        elif opc == Insertar:
+            Insertar_registro()
+        elif  opc == Mostrar:
+            Mostrar_Registro()
+        elif opc == Buscar:
+            Buscar_Registro()
+        elif opc == Eliminar:
+            Eliminar_Registro()
+        elif opc == Ordenar:
+            Ordenar_Registro()
+        elif opc == Limpiar:
+            Limpiar_Registro()
+        elif opc == Salir:
+            print('NOS VEMOS :).....')
+            continuar = False
+        else:
+            print('opcion no valida')
+            Input('seleccione enter para continuar...')
+
+        if __name__ == '__main__':
+          main()
+
+   
